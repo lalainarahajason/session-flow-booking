@@ -1,0 +1,132 @@
+[
+  {
+    "name": "collective_quote",
+    "schema": "QuoteInput",
+    "valid": true,
+    "value": {
+      "selection": {
+        "kind": "collective",
+        "session_id": "11111111-1111-4111-8111-111111111111"
+      },
+      "participants": [
+        {
+          "client_ref": "22222222-2222-4222-8222-222222222222",
+          "mode": "onsite"
+        }
+      ],
+      "payment_choice": "stripe_deposit"
+    }
+  },
+  {
+    "name": "individual_quote",
+    "schema": "QuoteInput",
+    "valid": true,
+    "value": {
+      "selection": {
+        "kind": "individual",
+        "training_id": "11111111-1111-4111-8111-111111111111",
+        "starts_at": "2026-12-10T09:00:00Z",
+        "timezone": "Europe/Paris"
+      },
+      "participants": [
+        {
+          "client_ref": "22222222-2222-4222-8222-222222222222",
+          "mode": "remote"
+        }
+      ],
+      "payment_choice": "stripe_full"
+    }
+  },
+  {
+    "name": "server_amount_only",
+    "schema": "PaymentInput",
+    "valid": true,
+    "value": {
+      "purpose": "initial"
+    }
+  },
+  {
+    "name": "client_amount_rejected",
+    "schema": "PaymentInput",
+    "valid": false,
+    "value": {
+      "purpose": "initial",
+      "amount_minor": 1
+    }
+  },
+  {
+    "name": "unknown_selection",
+    "schema": "Selection",
+    "valid": false,
+    "value": {
+      "kind": "package",
+      "session_id": "11111111-1111-4111-8111-111111111111"
+    }
+  },
+  {
+    "name": "presence_valid",
+    "schema": "PresenceInput",
+    "valid": true,
+    "value": {
+      "status": "present"
+    }
+  },
+  {
+    "name": "presence_invalid",
+    "schema": "PresenceInput",
+    "valid": false,
+    "value": {
+      "status": "paid"
+    }
+  },
+  {
+    "name": "refund_decimal_rejected",
+    "schema": "RefundInput",
+    "valid": false,
+    "value": {
+      "payment_id": "11111111-1111-4111-8111-111111111111",
+      "allocations": [
+        {
+          "line_id": "22222222-2222-4222-8222-222222222222",
+          "amount_minor": 1.5
+        }
+      ],
+      "reason": "Cancellation"
+    }
+  },
+  {
+    "name": "capacity_string_rejected",
+    "schema": "CapacityInput",
+    "valid": false,
+    "value": {
+      "capacity_total": "10",
+      "capacity_onsite": 5
+    }
+  },
+  {
+    "name": "missing_payment_purpose",
+    "schema": "PaymentInput",
+    "valid": false,
+    "value": {}
+  },
+  {
+    "name": "event_valid",
+    "schema": "DomainEvent",
+    "valid": true,
+    "value": {
+      "event_id": "11111111-1111-4111-8111-111111111111",
+      "event_type": "order.created",
+      "schema_version": 1,
+      "site_id": 1,
+      "aggregate_id": "22222222-2222-4222-8222-222222222222",
+      "aggregate_version": 1,
+      "occurred_at": "2026-11-09T13:00:00Z",
+      "causation_id": "33333333-3333-4333-8333-333333333333",
+      "correlation_id": "33333333-3333-4333-8333-333333333333",
+      "payload": {
+        "subject_id": "22222222-2222-4222-8222-222222222222",
+        "revision": 1
+      }
+    }
+  }
+]

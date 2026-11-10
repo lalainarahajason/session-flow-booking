@@ -1,0 +1,69 @@
+{
+  "product": "session-flow-bookings",
+  "prd_version": "0.4",
+  "contract_version": "0.1.1",
+  "date": "2026-11-10",
+  "authority": "specs/ dans le produit ; source de préparation conservée en lecture seule",
+  "files": [
+    {
+      "path": "specs/prd.md",
+      "source": "../ameliabooking/specs/prd.md",
+      "source_sha256": "f1af2decc692f705d3ef61d69a7dfb6fa058f6b1542b28074fe784e9befdb59f",
+      "imported_revision_sha256": "ebad5dca1fe93a9cffd52841d8aef415c38e1562b647df69cab6130923d1d5b3"
+    },
+    {
+      "path": "specs/fonctionnalites.md",
+      "source": "../ameliabooking/specs/fonctionnalites.md",
+      "source_sha256": "eda0a94e2955f1a718a60d3725218050576c9a1558ff54a1d1556f12782c7ff9",
+      "imported_revision_sha256": "87d9a44859243c428874be8d666147cfb8e33fff5ca6d9bd5672a972ecf98e3c"
+    },
+    {
+      "path": "specs/plan-developpement.md",
+      "source": "../ameliabooking/specs/plan-developpement.md",
+      "source_sha256": "c26e56f5c69883c201c2f64c78d8174bbd8169720c8642ee42728d882b856e2b",
+      "imported_revision_sha256": "39925d9cc4d7b53e05368ce992def76e7b7390e3905fba5f7f37b561573e7584"
+    },
+    {
+      "path": "specs/contracts/README.md",
+      "source": "../ameliabooking/specs/contracts/README.md",
+      "source_sha256": "92b8a3421ba46060bf91baa7bdad6db89a2a76badfb1824405eb08f5a3a5837e",
+      "imported_revision_sha256": "10159169726ee39a0735db9cf67cea38396e6e06994ffe3559ad2dbe62db2558"
+    },
+    {
+      "path": "specs/contracts/contrats-systeme.md",
+      "source": "../ameliabooking/specs/contracts/contrats-systeme.md",
+      "source_sha256": "34d784c0a23d034bf27841dff62d388d8cfd2563436fa8b99bf2b75ea1e48e4f",
+      "imported_revision_sha256": "75f0f5838d87b27f7e502f649a020586b5a52d33f4b1c2602f617d5191d1a473"
+    },
+    {
+      "path": "specs/contracts/modele-donnees.md",
+      "source": "../ameliabooking/specs/contracts/modele-donnees.md",
+      "source_sha256": "78d907dfb8e50434f9145f0d04bd3cbe1bc03e382c1d9bef26c508fbebde5b04",
+      "imported_revision_sha256": "22fe683a11c8f69ce6cd2f87e4b801b0bad6f50181cb9910109e1bfc18e34ea2"
+    },
+    {
+      "path": "specs/contracts/invariants.md",
+      "source": "../ameliabooking/specs/contracts/invariants.md",
+      "source_sha256": "85699bc7cf716dd4024d6904e122a5b1d96fc216009d2857dafb6ecf65e36493",
+      "imported_revision_sha256": "244497db8aada60ac0575462f502efb2cf455932fcc5a50ab3542b0339a2d8e7"
+    },
+    {
+      "path": "specs/contracts/openapi.json",
+      "source": "../ameliabooking/specs/contracts/openapi.json",
+      "source_sha256": "99a8d7e7940939eb721719667e8f797e3d0bac858a099c9b996aebc04f6b3ed2",
+      "imported_revision_sha256": "5a7455974bffc9bf4ada540c37abd0b27e7b3a0ee84b54db8e6b788acdac8cfc"
+    },
+    {
+      "path": "specs/contracts/examples.json",
+      "source": "../ameliabooking/specs/contracts/examples.json",
+      "source_sha256": "cda6aadb139ea42c5b3a63e8b4a574d46c1959ba648c338815346f8f31ee0d67",
+      "imported_revision_sha256": "cda6aadb139ea42c5b3a63e8b4a574d46c1959ba648c338815346f8f31ee0d67"
+    },
+    {
+      "path": "specs/contracts/validate_contracts.py",
+      "source": "../ameliabooking/specs/contracts/validate_contracts.py",
+      "source_sha256": "fcc1b96f47267828a1a8f8ccb26de4e729c5ff31af47479e28a3b92bf5dca255",
+      "imported_revision_sha256": "fcc1b96f47267828a1a8f8ccb26de4e729c5ff31af47479e28a3b92bf5dca255"
+    }
+  ]
+}

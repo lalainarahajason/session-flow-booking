@@ -1,0 +1,36 @@
+name: WordPress.org Plugin Check
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  plugin-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run test:tooling
+      - name: Start isolated Docker WordPress and install official Plugin Check
+        run: npm run env:start
+      - name: Static and runtime checks, errors and warnings block
+        run: npm run plugin-check
+      - name: Preserve full reports even after failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: plugin-check-reports
+          path: artifacts/plugin-check/
+          if-no-files-found: warn
+      - name: Stop this project's environment
+        if: always()
+        run: npm run env:stop

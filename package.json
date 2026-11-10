@@ -1,0 +1,19 @@
+{
+  "name": "session-flow-bookings",
+  "private": true,
+  "description": "Outillage de développement et de validation WordPress.org",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "wp-env": "wp-env",
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "plugin-check:install": "node tools/plugin-check.mjs install",
+    "plugin-check": "node tools/plugin-check.mjs check",
+    "test:tooling": "node --test tools/tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "@wordpress/env": "10.10.0"
+  }
+}
