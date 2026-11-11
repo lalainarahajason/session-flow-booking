@@ -83,3 +83,10 @@ Les 58 SHA256 du paquet monté correspondent exactement au manifest final. Derni
 ## Autorisation de publication de branche
 Utilisateur : commit et push de sprint-1 explicitement autorisés pour exécuter la CI et terminer S1-A6. Aucune autorisation de fusion, release ou Sprint 2.
 Contrôle préparatoire du script CI : correction de l'échappement excessif du motif vérifiant le résumé PHPUnit, validé contre le rapport existant. Aucun changement PHP produit.
+
+## CI distante — première exécution 8559e72
+- Sprint quality 43067350206 : unitaires PHP 8.3/8.4, WPCS, OpenAPI et Node réussis ; intégration bloquée au démarrage de wp-env.
+- Plugin Check 43067350198 : même blocage avant contrôle.
+- Constat initial : Docker crée le répertoire hôte artifacts/plugin-check absent avec un propriétaire empêchant l'écriture du runner Linux ; EACCES dans le hook afterStart.
+- Correction 1 (package.json, env:start) : créer le répertoire côté hôte avant le premier montage Docker. Aucun chmod large, aucune exclusion de contrôle.
+- Logs complets conservés sous artifacts/ci/43067350206/failed.log et artifacts/ci/43067350198/failed.log.

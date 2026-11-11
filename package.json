@@ -7,7 +7,7 @@
   },
   "scripts": {
     "wp-env": "wp-env",
-    "env:start": "wp-env start",
+    "env:start": "mkdir -p artifacts/plugin-check && wp-env start",
     "env:stop": "wp-env stop",
     "plugin-check:install": "node tools/plugin-check.mjs install",
     "plugin-check": "node tools/plugin-check.mjs check",
