@@ -1,7 +1,7 @@
 {
   "name": "session-flow-bookings",
   "private": true,
-  "description": "Outillage de développement et de validation WordPress.org",
+  "description": "Outillage de d\u00e9veloppement et de validation WordPress.org",
   "engines": {
     "node": ">=22.13.0"
   },
@@ -11,9 +11,14 @@
     "env:stop": "wp-env stop",
     "plugin-check:install": "node tools/plugin-check.mjs install",
     "plugin-check": "node tools/plugin-check.mjs check",
-    "test:tooling": "node --test tools/tests/*.test.mjs"
+    "test:tooling": "node --test tools/tests/*.test.mjs",
+    "test:e2e": "playwright test",
+    "validate:contracts": "redocly lint specs/contracts/openapi.json --extends spec && python3 specs/contracts/validate_contracts.py",
+    "build:plugin": "bash bin/build-plugin.sh"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@redocly/cli": "^2.77.0",
     "@wordpress/env": "10.10.0"
   }
 }

@@ -5,9 +5,14 @@
   "plugins": [],
   "mappings": {
     "wp-content/plugins/session-flow-bookings": ".",
-    "wp-content/sfbk-check-reports": "./artifacts/plugin-check"
+    "wp-content/sfbk-check-reports": "./artifacts/plugin-check",
+    "wp-content/sfbk-dev-source": "."
   },
-  "env": { "tests": { "port": 8897 } },
+  "env": {
+    "tests": {
+      "port": 8897
+    }
+  },
   "config": {
     "WP_DEBUG": true,
     "WP_DEBUG_LOG": true,

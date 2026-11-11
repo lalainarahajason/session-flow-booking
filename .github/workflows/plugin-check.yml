@@ -18,8 +18,16 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+      - run: composer install --no-interaction
       - run: npm ci --ignore-scripts
       - run: npm run test:tooling
+      - run: npm run build:plugin
+      - name: Mount the actual distributable package
+        run: node -e 'require("node:fs").writeFileSync(".wp-env.override.json", JSON.stringify({mappings:{"wp-content/plugins/session-flow-bookings":"./dist/session-flow-bookings"},env:{tests:{core:"https://downloads.wordpress.org/release/wordpress-7.1.4.zip"}}}))'
       - name: Start isolated Docker WordPress and install official Plugin Check
         run: npm run env:start
       - name: Static and runtime checks, errors and warnings block

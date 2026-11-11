@@ -1,0 +1,150 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "SFBK isolated Sprint 1 demonstrator",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "/wp-json/sfbk-test/v1"
+    }
+  ],
+  "paths": {
+    "/resources/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      ],
+      "get": {
+        "operationId": "getDemoResource",
+        "security": [
+          {
+            "WpCookie": [],
+            "WpNonce": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Private resource projection"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Capability or nonce denied"
+          },
+          "404": {
+            "description": "Missing or out of scope"
+          }
+        }
+      },
+      "put": {
+        "operationId": "replaceDemoResource",
+        "security": [
+          {
+            "WpCookie": [],
+            "WpNonce": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "If-Match",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^\"[1-9][0-9]*\"$"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "label"
+                ],
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 100
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated or authorized replay"
+          },
+          "400": {
+            "description": "Invalid JSON"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "403": {
+            "description": "Nonce or capability denied"
+          },
+          "404": {
+            "description": "Missing or out of scope"
+          },
+          "409": {
+            "description": "Intention mismatch or running"
+          },
+          "412": {
+            "description": "Stale version"
+          },
+          "413": {
+            "description": "Body too large"
+          },
+          "422": {
+            "description": "Invalid DTO"
+          },
+          "428": {
+            "description": "Missing precondition"
+          }
+        },
+        "x-capability": "booking_manage_catalog",
+        "x-scope": "same site and owner, or booking_manage_settings",
+        "x-version-owner": "resource",
+        "x-transaction": "intention + locked resource + audit + outbox"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "WpCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "wordpress_logged_in_HASH"
+      },
+      "WpNonce": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-WP-Nonce"
+      }
+    }
+  }
+}

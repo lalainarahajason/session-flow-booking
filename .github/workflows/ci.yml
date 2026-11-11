@@ -1,0 +1,46 @@
+name: Sprint quality
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: composer install --no-interaction
+      - run: composer test
+      - run: composer lint
+      - run: npm ci --ignore-scripts
+      - run: npm run validate:contracts
+      - run: npm run test:tooling
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: bash bin/install-test-environment.sh
+      - run: npm run wp-env -- run tests-cli wp plugin activate session-flow-bookings --user=1
+      - run: npm run wp-env -- run tests-cli wp user create sfbk_browser_trainer sfbk_browser_trainer@example.test --role=sfbk_trainer --user_pass=sfbk_browser_test_only --user=1
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sprint-qa
+          path: artifacts/

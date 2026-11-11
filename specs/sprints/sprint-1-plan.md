@@ -2,7 +2,7 @@
 
 Date du cadrage : 10 novembre 2026. Révision documentaire : identité et WordPress.org demandées le même jour.
 
-**Statut : proposition technique en attente de validation.** L'autorisation d'enregistrer ce document ne vaut ni validation du cadrage, ni autorisation de lancer le sprint. Aucun code produit n'a été écrit pour ce cadrage.
+**Statut : cadrage validé explicitement ; Sprint 1 en cours sur `sprint-1`.** L'autorisation d'enregistrer ce document ne vaut ni validation du cadrage, ni autorisation de lancer le sprint. Aucun code produit n'a été écrit pour ce cadrage.
 
 ## 1. Objectif et sources
 
@@ -402,3 +402,12 @@ Appliquer NFR-17/18 et [la procédure](../../docs/wordpress-org.md) : API HTTP W
 wp-env utilise MariaDB pour cette vérification WordPress.org uniquement. Cela ne prouve pas les migrations/verrous MySQL 8.4 retenus dans le cadrage : l'environnement transactionnel cible et sa matrice restent à préparer et tester au Sprint 1. Aucune compatibilité MariaDB métier n'est annoncée.
 
 Le nom `session-flow-bookings`, les exigences WordPress.org et l'outillage demandé sont décidés ; les autres choix techniques proposés et le lancement du Sprint 1 restent en attente de validation.
+
+## Validation et précisions d'exécution
+
+Cadrage validé dans la conversation, puis initialisation/commit Git autorisés.
+Référence initiale cdf1836 ; dépôt GitHub : https://github.com/lalainarahajason/session-flow-booking.git.
+Version produit proposée 0.1.0 retenue pour l'incrément, schéma 0001.
+Le démonstrateur utilise sfbk-test/v1 (préfixe quatre lettres), sans modifier booking/v1.
+La recette et les compteurs sont suivis dans sprint-1-execution.md.
+Les rôles, migrations et primitives ont des tests MySQL ; les scénarios métier des sprints ultérieurs restent hors incrément.

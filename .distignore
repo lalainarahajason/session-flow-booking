@@ -1,0 +1,11 @@
+.git
+.github
+.claude
+node_modules
+tests
+tools
+bin
+docker
+artifacts
+dist
+.env

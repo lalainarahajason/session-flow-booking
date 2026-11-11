@@ -104,3 +104,24 @@ Revue du périmètre livré (documentation, JSON/YAML et scripts Node de dévelo
 | Processus de l'outillage | Arguments WP-CLI transmis après `--` ; commande shell interne fixe, sans données HTTP ; sorties et statuts conservés, résultats inconnus refusés |
 
 Ce relevé n'est ni un audit de sécurité du futur plugin, ni une clôture du Sprint 1. Les règles bloquantes seront appliquées au code et au paquet lorsqu'ils existeront.
+
+## Exécution Sprint 1 (11 novembre 2026)
+
+Le fichier principal et le readme existent, produit 0.1.0. Le contrôle porte sur dist/session-flow-bookings,
+construit par allowlist ; les erreurs relevées sur la racine contenant tests/outillage ne sont pas masquées.
+La base de référence reste WordPress 6.8.3 ; la cible de revue utilise l'archive officielle 7.1.4
+dans env.tests.core pour éviter le cache Git partagé par wp-env 10.10.
+Source de version vérifiée : https://api.wordpress.org/core/version-check/1.7/ .
+Le Tested up to 7.1 est fondé sur 29 tests d'intégration et 3 parcours navigateur réussis sur 7.1.4.
+Le détail de la recette, des rapports et des limites reste dans specs/sprints/sprint-1-recette.md.
+Le montage wp-content/sfbk-dev-source est réservé à l'outillage local, hors du répertoire du plugin contrôlé.
+
+Sept avis npm affectent les dépendances de développement de wp-env épinglé ; voir artifacts/qa/npm-audit.json.
+Aucune dépendance Node ni PHPUnit/WPCS ne figure dans le paquet runtime. Pas de mise à jour majeure forcée
+ni d'exclusion silencieuse pour faire disparaître ces avis ; réévaluation séparée de l'outillage nécessaire.
+
+Après remplacement du répertoire dist par un nouveau répertoire, Docker peut garder le montage sur
+l'ancien inode malgré wp-env start. Comparer les SHA256 du readme (hôte/conteneur) avant le contrôle.
+Si les empreintes divergent, recréer uniquement tests-cli/tests-wordpress avec Docker Compose
+`up -d --force-recreate tests-cli tests-wordpress` sur le compose du projet ; ne pas supprimer les volumes.
+Vérifier les empreintes à nouveau, puis lancer le wrapper officiel. Aucun succès sur un ancien paquet ne vaut recette.
