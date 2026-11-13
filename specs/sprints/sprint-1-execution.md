@@ -90,3 +90,8 @@ Contrôle préparatoire du script CI : correction de l'échappement excessif du 
 - Constat initial : Docker crée le répertoire hôte artifacts/plugin-check absent avec un propriétaire empêchant l'écriture du runner Linux ; EACCES dans le hook afterStart.
 - Correction 1 (package.json, env:start) : créer le répertoire côté hôte avant le premier montage Docker. Aucun chmod large, aucune exclusion de contrôle.
 - Logs complets conservés sous artifacts/ci/43067350206/failed.log et artifacts/ci/43067350198/failed.log.
+
+## CI e9695d0 : progression et correction portable
+Plugin Check distant 43067732045 : succès, contrôle du paquet statique/runtime exécuté.
+Sprint quality 43067732166 : unitaires verts, intégration arrêtée car ripgrep n'est pas installé dans le runner Ubuntu.
+Correction 1 pour cette erreur (bin/install-test-environment.sh) : utiliser grep POSIX disponible sur macOS/Linux ; même sélection exacte du montage et même exigence de résumé PHPUnit. Aucun contrôle supprimé.
