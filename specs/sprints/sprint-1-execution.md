@@ -7,10 +7,10 @@ Dépôt : https://github.com/lalainarahajason/session-flow-booking.git
 ## Progression
 1. Isolation Git : réussie, arbre propre avant création de branche.
 2. Implémentation : réalisée dans le périmètre.
-3. QA : contrôles locaux réussis ; CI distante non exécutée.
+3. QA : contrôles locaux et CI distante réussis.
 4. Audit sécurité/performance : réalisé sur le code et le paquet, limites documentées.
-5. Recette : S1-A1 à S1-A5 vérifiés ; S1-A6 partiel pour CI distante.
-6. Clôture : suspendue à la preuve CI distante, bilan préparé.
+5. Recette : S1-A1 à S1-A6 vérifiés.
+6. Clôture : achevée, bilan finalisé avec preuves GitHub.
 
 ## Compteurs
 Historique détaillé ci-dessous ; aucune erreur persistante au coupe-circuit 3/3.
@@ -95,3 +95,9 @@ Contrôle préparatoire du script CI : correction de l'échappement excessif du 
 Plugin Check distant 43067732045 : succès, contrôle du paquet statique/runtime exécuté.
 Sprint quality 43067732166 : unitaires verts, intégration arrêtée car ripgrep n'est pas installé dans le runner Ubuntu.
 Correction 1 pour cette erreur (bin/install-test-environment.sh) : utiliser grep POSIX disponible sur macOS/Linux ; même sélection exacte du montage et même exigence de résumé PHPUnit. Aucun contrôle supprimé.
+
+## Clôture vérifiée — 14 novembre 2026
+Commit de référence 9417a24 : Sprint quality 43407162787 et Plugin Check 43407162677 tous deux success.
+Artefacts téléchargés et inspectés : PHPUnit 29/121 ; Playwright 3/3 sans skip/flaky ; result.json Plugin Check ok=true et stdout sans constat.
+Les deux erreurs CI d'environnement ont chacune été corrigées au premier correctif ciblé ; aucun coupe-circuit déclenché.
+Bilan et recette finalisés. Le commit documentaire de clôture ne change aucun comportement produit.

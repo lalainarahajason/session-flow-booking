@@ -2,7 +2,7 @@
 
 Date du cadrage : 10 novembre 2026. Révision documentaire : identité et WordPress.org demandées le même jour.
 
-**Statut : cadrage validé explicitement ; Sprint 1 en cours sur `sprint-1`.** L'autorisation d'enregistrer ce document ne vaut ni validation du cadrage, ni autorisation de lancer le sprint. Aucun code produit n'a été écrit pour ce cadrage.
+**Statut : Sprint 1 clôturé sur `sprint-1` — critères vérifiés, bilan et recette finalisés.** L'autorisation d'enregistrer ce document ne vaut ni validation du cadrage, ni autorisation de lancer le sprint. Aucun code produit n'a été écrit pour ce cadrage.
 
 ## 1. Objectif et sources
 

@@ -1,9 +1,9 @@
-# Sprint 1 — bilan de l'exécution locale
+# Sprint 1 — bilan final
 
-**Décision : clôture suspendue à la preuve de CI GitHub.** Le commit/push des changements produit n'a pas été autorisé. Aucun passage au Sprint 2.
+**Décision : Sprint 1 clôturé — critères S1-A1 à S1-A6 vérifiés.** Bilan finalisé le 14 novembre 2026 après vérification des deux workflows GitHub réussis sur `9417a24e393c17a59a75fcd27f81a27e5419aa32`. Aucun passage au Sprint 2.
 
 Branche `sprint-1`, référence initiale `cdf1836` (commit des spécifications/outils autorisé séparément).
-Origin : https://github.com/lalainarahajason/session-flow-booking.git ; lecture des références : dépôt distant vide.
+Origin : https://github.com/lalainarahajason/session-flow-booking.git ; branche `sprint-1` poussée avec autorisation explicite. Aucun merge ni release.
 Sources : PRD 0.4, contrats 0.1.1 / OpenAPI 3.1.1. Aucun changement de route métier, DTO ou invariant.
 
 ## Livrables
@@ -17,14 +17,14 @@ Aucune réservation ni opération financière métier livrée dans cet incrémen
 
 ## Critères et preuves
 
-| Critère | Exigences / invariants | Fichiers principaux | Preuves locales | Statut |
+| Critère | Exigences / invariants | Fichiers principaux | Preuves locales et CI | Statut |
 |---|---|---|---|---|
-| S1-A1 | NFR-10/12, INV-01 | Lifecycle, MigrationRunner, SchemaVerifier, Version0001 | Installation wp-env, LifecycleTest, MigrationTest ; table manquante recréée et audit conservé | Vérifié localement |
-| S1-A2 | WP-02, NFR-01/02, INV-02/20 | Capabilities, Menu, UninstallSettings, AuthorizationPolicy | AdminPermissionsTest, SiteIsolationTest, Playwright ; accès direct formateur refusé, nonce manquant refusé | Vérifié localement |
-| S1-A3 | NFR-02, INV-19/20, CT-15/16 | DtoValidator, Version, RequestContext, ResponseFactory, RouteRegistrar | DTO imbriqués, JSON/types/bornes, versions, taille, dispatch WordPress réel, SQL traité comme valeur | Vérifié localement |
-| S1-A4 | INV-18, CT-06 | IdempotentMutation, WpdbIdempotencyStore | Replay, mismatch, droits révoqués et deux processus indépendants ; un seul audit/outbox/intention | Vérifié localement |
-| S1-A5 | NFR-14, INV-15/18 | WpdbTransactionManager, JobWorker, stores | Rollback après toutes les écritures ; deux workers ; bail repris ; ancien jeton refusé ; deux jobs pour un événement, un effet | Vérifié localement |
-| S1-A6 | NFR-10/11/12/17/18 | Uninstaller, workflows, bin, readme, LICENSE | Désinstallation conservatrice/explicite, WPCS, OpenAPI, PHPUnit, paquet | Tous contrôles locaux dont Plugin Check vérifiés ; CI distante non exécutée |
+| S1-A1 | NFR-10/12, INV-01 | Lifecycle, MigrationRunner, SchemaVerifier, Version0001 | Installation wp-env, LifecycleTest, MigrationTest ; table manquante recréée et audit conservé | Vérifié localement et en CI |
+| S1-A2 | WP-02, NFR-01/02, INV-02/20 | Capabilities, Menu, UninstallSettings, AuthorizationPolicy | AdminPermissionsTest, SiteIsolationTest, Playwright ; accès direct formateur refusé, nonce manquant refusé | Vérifié localement et en CI |
+| S1-A3 | NFR-02, INV-19/20, CT-15/16 | DtoValidator, Version, RequestContext, ResponseFactory, RouteRegistrar | DTO imbriqués, JSON/types/bornes, versions, taille, dispatch WordPress réel, SQL traité comme valeur | Vérifié localement et en CI |
+| S1-A4 | INV-18, CT-06 | IdempotentMutation, WpdbIdempotencyStore | Replay, mismatch, droits révoqués et deux processus indépendants ; un seul audit/outbox/intention | Vérifié localement et en CI |
+| S1-A5 | NFR-14, INV-15/18 | WpdbTransactionManager, JobWorker, stores | Rollback après toutes les écritures ; deux workers ; bail repris ; ancien jeton refusé ; deux jobs pour un événement, un effet | Vérifié localement et en CI |
+| S1-A6 | NFR-10/11/12/17/18 | Uninstaller, workflows, bin, readme, LICENSE | Désinstallation conservatrice/explicite, WPCS, OpenAPI, PHPUnit, paquet | Vérifié : tous contrôles locaux et deux workflows GitHub réussis |
 
 REC-10/12 préparés sur objets techniques ; couverture métier à reprendre après création de ces objets.
 
@@ -88,9 +88,22 @@ PHPDoc et CHANGELOG Unreleased mis à jour avec les changements réels.
 
 ## Risques résiduels et travail restant
 
-- CI GitHub distante : non exécutée ; workflows prêts, dépôt distant vide. Nécessite autorisation explicite de commit/push du code produit.
+- Les premiers échecs CI (propriété du répertoire des rapports, puis absence de ripgrep) sont corrigés et tracés dans le journal ; aucun contrôle ni test supprimé.
 - Sept avis npm sur l'outillage wp-env 10.10.0 hérité : 2 critiques, 3 élevés, 2 faibles, rapport complet conservé. Aucune dépendance concernée dans le paquet produit. Exploitabilité locale non reproduite ; ne pas présenter cet inventaire comme une absence de risque sur les postes de développement. Mise à jour majeure non appliquée silencieusement.
 - Recette navigateur automatisée, pas de pilote humain ni d'audit exhaustif lecteur d'écran.
 - La sécurité globale, le moteur de réservation, les finances et les performances métier ne sont pas certifiés par ce socle.
 
-Le sprint reste non clôturé tant que les preuves obligatoires manquantes ne sont pas obtenues.
+Les six étapes execute-sprint sont achevées. Aucun critère obligatoire du Sprint 1 ne reste non vérifié ; les limites métier et risques d’outillage ci-dessus sont conservés explicitement.
+
+## Preuves GitHub Actions finales
+
+Commit produit et outillage vérifié : `9417a24e393c17a59a75fcd27f81a27e5419aa32`.
+
+- [Sprint quality](https://github.com/lalainarahajason/session-flow-booking/actions/runs/43407162787) : **success** ; jobs unit (8.3), unit (8.4), integration tous réussis.
+- PHPUnit distant d'intégration : **29 tests, 121 assertions**, PHP 8.3.36 / MySQL 8.4 ; aucun test sauté.
+- Playwright distant : **3 réussis, 0 skipped, 0 unexpected, 0 flaky** ; artefact sprint-qa.
+- [WordPress.org Plugin Check](https://github.com/lalainarahajason/session-flow-booking/actions/runs/43407162677) : **success**, statique/runtime sur le paquet distribué, zéro constat ; artefact plugin-check-reports.
+- Environnements et commandes du contrôle sont conservés dans les JSON 01–04 et runner.json des artefacts.
+- Copies locales des artefacts : `artifacts/ci/43407162787/artifacts/` et `artifacts/ci/43407162677/artifacts/`.
+
+La clôture documentaire ajoute uniquement ces preuves et statuts ; elle ne modifie pas le code PHP, les contrats ni le paquet local déjà audité. Les dépendances de développement signalées restent hors du paquet runtime.
